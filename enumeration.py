@@ -16,9 +16,7 @@ def check_number_card(original_hash: str, card_number: str) -> int:
     :return: Номер карты, если сооветствует, -1 - если не соответствует
     """
     true_hash = hashlib.sha384(card_number.encode()).hexdigest()
-    if original_hash == true_hash:
-        return int(card_number)
-    return 0
+    return int(card_number) if original_hash == true_hash else 0
 
 
 def enumerate_number_card(original_hash: str, bins: str, last_four_numbers: str, core_number: int = mp.cpu_count()) \
